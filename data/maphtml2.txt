@@ -1,0 +1,7 @@
+,  11);  
+                        map.addLayer(osmLayer).addLayer(waqiLayer);  
+                  </script>
+            </div>
+
+      </body>
+</html>

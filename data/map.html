@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+      <head>
+            <title>Map-Air Project</title>
+            <style>
+
+                  span.good {
+                    border: 3px gray;
+                    padding: 5px;
+                    background: #7CC38E;
+                    width: 90;
+                  }
+
+                  span.moderate {
+                    border: 3px gray;
+                    padding: 5px;
+                    background: #FCDE62;
+                    width: 90;
+                  }
+                  span.unhealthy1 {
+                    border: 3px gray;
+                    padding: 5px;
+                    background: #FCB462;
+                    width: 90;
+                  }
+                  span.unhealthy {
+                    border: 3px gray;
+                    padding: 5px;
+                    background: #C70039;
+                    width: 90;
+                  }
+                  span.veryunhealthy {
+                    border: 3px gray;
+                    padding: 5px;
+                    background: #B05AB7;
+                    width: 90;
+                  }
+                  span.Hazardous {
+                    border: 3px gray;
+                    padding: 5px;
+                    background: #7F0A3B;
+                    width: 90;
+                  }
+            </style>
+      </head>
+      <body>
+      <center>
+            <h2>Air Pollution Project</h2>
+            <h3>
+                  <span class="good">Good</span>  ---  <span class="moderate">Moderate</span>  ---  <span class="unhealthy1">Some Unhealthy </span>  ---  <span class="unhealthy">Unhealthy</span>  ---  <span class="veryunhealthy">Very Unhealthy</span>  ---  <span class="Hazardous">Hazardous</span>
+            </h3>
+      </center>
+            <div  id='map'  style='height:500px;'>  
+                  <link  rel="stylesheet"  href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"  />  
+                  <script  src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>  
+                  <script>  
+                        var  OSM_URL  =  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';  
+                        var  OSM_ATTRIB  =  '&copy;Python Air Project&waqi.info';  
+                        var  osmLayer  =  L.tileLayer(OSM_URL,  {attribution:  OSM_ATTRIB});  
+                    
+                        var  WAQI_URL    =  "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=37f96394ffe8b6cca1110af3d8270604c711c688";  
+                        var  WAQI_ATTR  =  'JNV 2020';  
+                        var  waqiLayer  =  L.tileLayer(WAQI_URL,  {attribution:  WAQI_ATTR});  
+                    
+                        var  map  =  L.map('map').setView([18.529603, 73.849586],  11);  
+                        map.addLayer(osmLayer).addLayer(waqiLayer);  
+                  </script>
+            </div>
+
+      </body>
+</html>
