@@ -18,6 +18,12 @@ import matplotlib.pyplot as plt
 #pip install center_tk_window
 import center_tk_window
 
+* Also u need to add your email and password in data/mailid.pydb and data/mailpassword.pydb respectively
+* and also to allow less secure apps in mail
+* go to given link to do so
+* https://myaccount.google.com/lesssecureapps 
+
+
 *Default installed
 tkinter
 sqlite3
