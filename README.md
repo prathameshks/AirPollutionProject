@@ -1,3 +1,6 @@
+Check Site http://apwproject.rf.gd/
+for More Info
+
 # AirPollutionProject
 App to display air pollution and weather data of city entered
 *To start the app run the main.py file
