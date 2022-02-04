@@ -1,0 +1,4 @@
+requests==2.27.1
+pillow==9.0.1
+matplotlib==3.5.1
+center_tk_window==1.0.0
