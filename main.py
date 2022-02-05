@@ -26,7 +26,7 @@ root.columnconfigure(0, weight=1)
 time = datetime.now()
 timemain = int(time.hour)
 root.attributes("-topmost", False)
-root.iconbitmap('data\\icon.ico')
+root.iconbitmap(default='data\\icon.ico')
 root.attributes("-fullscreen", True)
 if timemain >= 18 or timemain <= 6:
     mainbgnight = Image.open('data/MAINBACKG.jpg')
@@ -48,6 +48,7 @@ root.attributes("-alpha", 0.95)
 win.attributes("-topmost", True)
 win.title('HOME')
 win.minsize(470, 600)
+win.geometry('400x700')
 win.config(bg=color)
 center_tk_window.center(root, win)
 win.iconbitmap('data\\icon.ico')
@@ -149,7 +150,7 @@ def citydata():
 
     # close btn
     def clz1():
-        w1.destroy();
+        w1.destroy()
         win.deiconify()
 
     btw1 = ttk.Button(w1, text='Close', command=clz1)
@@ -180,7 +181,7 @@ def citydata():
             search_main(cityl)
         except:
             tkinter.messagebox.showerror(title="Error Message",
-                                         message="No Internet Connection\n-------------------------------\nCan't Locate you")
+                                         message="No Internet Connection\nCan't Locate you")
 
     def search_main(cityxyz):
         w1.attributes("-topmost", False)
@@ -704,7 +705,7 @@ def cityweather():
                 w2dataall = rw2.json()
                 s = w2dataall['cod']
                 if s == 404:
-                    print('eee')
+                    # print('eee')
                     status = 'error'
                 else:
                     status = 'ok'
@@ -854,6 +855,7 @@ def cityweather():
                 w2lab11a = Label(w2, text=":\t" + str(clouds) + " okta", font=("sans-serif", 10), bg=color)
                 w2lab11a.grid(row=15, column=1, sticky="nsw")
 
+                w2.geometry('400x700')
                 global searchw_cityforgrapha
                 searchw_cityforgrapha = True
 
@@ -987,6 +989,7 @@ def maildata():
                 labshow = Label(w3_p, text="City Found \t*Data ready to send", bg=color, fg="green")
                 labshow.grid(row=5, padx=10, pady=10, column=0, columnspan=2, sticky='nsew')
 
+                w3_p.geometry('400x700')
                 saveboolvar = BooleanVar(w3_p, False)
                 secbn = Checkbutton(w3_p, text="Save Mail ID", bg=color, variable=saveboolvar)
                 secbn.grid(row=5, padx=10, pady=10, column=2, columnspan=2, sticky='nsew')
@@ -1109,6 +1112,7 @@ def maildata():
             else:
                 status = 'ok'
             if status == 'ok':
+                w3_w.geometry('400x700')
                 labshow = Label(w3_w, text="City Found \t*Data ready to send", bg=color, fg="green")
                 labshow.grid(row=5, padx=10, pady=10, column=0, columnspan=2, sticky='nsew')
                 saveboolvar = BooleanVar(w3_w, False)
@@ -1266,10 +1270,10 @@ def moreinfo():
         w4lc4.grid(row=c + 4, column=1, sticky="nsw", columnspan=2)
 
     w4ld = Label(w4,
-                 text="If you still get error check your internet connection OR refer our website http://apwproject.rf.gd",
+                 text="If you still get error check your internet connection OR refer our website https://prathameshks.github.io/APWProject/",
                  bg=color, wraplength=450, fg="black", font=("Helvetica", 12))
     w4ld.grid(row=c + 6, column=0, sticky="nsw", columnspan=3)
-    w4ld.bind("<Button-1>", lambda e: openmyweb("http://apwproject.rf.gd"))
+    w4ld.bind("<Button-1>", lambda e: openmyweb("https://prathameshks.github.io/APWProject/"))
     btc = ttk.Button(w4, text="show", command=showc)
     btc.grid(row=c, column=0, sticky="nse", columnspan=3)
     makeweight1(2, c + 6)
@@ -1284,7 +1288,10 @@ def moreinfo():
     btw4.grid(row=0, column=1, columnspan=2, sticky='NE')
 
 
-def openmyweb(url): wb.open_new_tab(url)
+def openmyweb(url): 
+    win.iconify()
+    root.iconify()
+    wb.open_new_tab(url)
 
 
 bt4 = Button(win, text='More information on Pollution', command=moreinfo, bg='black', fg='white')
@@ -1296,10 +1303,11 @@ bt4.grid(row=5, column=0, pady=10, padx=10, sticky='nsew')
 # copyright labels
 lab2 = Label(win, text='\xa9 copyright : OpenWeather \x26 aqicn.org', wraplength=500, bg=color)
 lab2.grid(row=6, column=0, pady=10, padx=10, sticky='nsew')
-lab3 = Label(win, text='Click Here To open Our Website http://apwproject.rf.gd', cursor="hand2", wraplength=500,
+lab3 = Label(win, text='Click Here To open Our Website https://prathameshks.github.io/APWProject/', cursor="hand2", wraplength=500,
              bg=color)
 lab3.grid(row=7, column=0, pady=10, padx=10, sticky='nsew')
-lab3.bind("<Button-1>", lambda e: openmyweb("http://apwproject.rf.gd"))
+
+lab3.bind("<Button-1>", lambda e: openmyweb("https://prathameshks.github.io/APWProject/"))
 
 
 def MailWeather(w_city, mailid, data_w2):
@@ -1495,12 +1503,15 @@ def rfscreen():
 def rfscreenout():
     root.attributes("-fullscreen", False)
 
+def mainend():
+    root.destroy()
+    exit()
 
 btf = Button(root, text='Fullscreen', command=rfscreen, width=17, height=1)
 btf.grid(row=0, column=0, sticky='NE', pady=50, padx=10)
 btfn = Button(root, text='Exit Fullscreen', command=rfscreenout, width=17, height=1)
 btfn.grid(row=0, column=0, sticky='Ne', pady=90, padx=10)
-btnexit = Button(root, text='End App', command=lambda: exit(), width=17, height=1)
+btnexit = Button(root, text='End App', command=mainend, width=17, height=1)
 btnexit.grid(row=0, column=0, sticky='Ne', pady=130, padx=10)
 
 
