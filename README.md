@@ -1,4 +1,4 @@
-Check Site http://apwproject.rf.gd/
+Check Site https://prathameshks.github.io/APWProject/
 for More Info
 
 # AirPollutionProject
